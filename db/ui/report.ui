@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>reportDlg</class>
+ <widget class="QDialog" name="reportDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>142</width>
+    <height>252</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>13</y>
+     <width>120</width>
+     <height>229</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="dailyPaymentReportPushButton">
+        <property name="text">
+         <string>Daily &amp;Payment</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="testCountPushButton">
+        <property name="text">
+         <string>Daily &amp;Test Count</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="overdueAccountsPushButton">
+        <property name="text">
+         <string>Outstanding &amp;Balances</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="activityReportPushButton">
+        <property name="text">
+         <string>Activity Report</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="anomalyReportPushButton">
+        <property name="text">
+         <string>&amp;Anomaly Report</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="quarterlyPaymentSummaryPushButton">
+        <property name="text">
+         <string>Accounts &amp;Summary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="yearlyCompliancePushButton">
+        <property name="text">
+         <string>Yearly &amp;Compliance</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="lotRecallPushButton">
+      <property name="text">
+       <string>Lot &amp;Recall</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

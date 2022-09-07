@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Sterilizer Bill
+    </title>
+    <style type="text/css">
+
+
+        @page {
+            size: letter;
+            top: 0in;
+            left: 0in;
+            right: 0in;
+            bottom: 0in;
+        @frame header {
+            -pdf-frame-content: headerContent;
+            top: 2.0in;
+            height: 0.375in;
+        }
+        @frame topAddress {
+            top: 2.375in;
+            margin-left: 0.5in;
+            margin-right: 0.5in;
+            height: 3.0in;
+        }
+        @frame divider {
+            -pdf-frame-content: dividerContent;
+            top: 5.4in;
+            margin-left: 0.1in;
+            margin-right: 0.1in;
+            height: 0.55in;
+        }
+        @frame bottomAddress {
+            top: 5.95in;
+            margin-left: 0.5in;
+            margin-right: 0.5in;
+            height: 4.225in;
+        }
+        @frame footer {
+            -pdf-frame-content: footerContent;
+            bottom: 0in;
+            margin-left: 0.5in;
+            margin-right: 0.5in;
+            height: 1.5in;
+        }
+        }
+
+        body
+        {
+        margin:0px;
+        padding:0px;
+        }
+
+
+
+        table {
+        width: 7.5in;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        table.charges {
+        width: 7.5in;
+        margin-top: 20px;
+        padding-top: 4px;
+        }
+
+        td.invoice {
+        font-family: courier new;
+        font-size: 22px;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+        }
+
+        td.address_dentist {
+        font-family: "Times New Roman";
+        font-size: 14px;
+        width: 5.0in;
+	line-height: 105%;
+        }
+
+        td.sterilization {
+        width: 2.5in;
+        font-family: "Courier New";
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+	line-height: 105%;
+        }
+
+        th.charges {
+        border: 1px solid black;
+        font-family: "Courier New";
+        vertical-align: bottom;
+        font-size: 12px;
+        text-align: center;
+        }
+
+
+        th.charges_currency {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        vertical-align: bottom;
+        text-align: right;
+        padding-right: 4px;
+        }
+
+        td.charges {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: center;
+        }
+
+
+        td.charges_currency {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: right;
+        padding-right: 4px;
+        }
+
+
+        td.balance_due {
+        font-family: "Courier New";
+        font-size: 12px;
+        font-weight: bold;
+        text-align: right;
+        padding-right: 4px;
+        }
+
+
+        td.total_due {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        font-weight: bold;
+        text-align: right;
+        padding-right: 4px;
+        }
+
+
+        th.charges_check {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: left;
+        padding-left: 4px;
+        }
+
+
+        td.charges_check {
+        border: 1px solid black;
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: left;
+        padding-left: 4px;
+        }
+
+
+        td.notice {
+        width: 4.5in;
+        font-family: "Times New Roman";
+        font-size: 14px;
+	line-height: 105%;
+        }
+
+        td.address_oml {
+        width: 3in;
+        font-family: "Courier New";
+        font-size: 14px;
+        font-weight: bold;
+	line-height: 105%;
+        }
+
+        td.late_notice {
+        font-family: "Courier New";
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+	line-height: 105%;
+        }
+
+        td.divider {
+        font-family: "Courier New";
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px dashed grey;
+        }
+
+        td.late_notice {
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align:center;
+        font-weight:bold;
+        padding:0px;
+	line-height: 105%;
+        }
+
+	table.footer
+        {
+        line-height:105%;
+        }
+
+</style>
+</head>
+
+<body>
+
+
+    <div id="headerContent">
+        <table>
+            <tr>
+                <td class="invoice">
+                    INVOICE
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        
+{% include "dentist_address.html" %}
+        
+{% include "charges.html" %}
+    </div>
+<pdf:nextframe />
+    <div id="dividerContent">
+        
+<h3>
+            
+<table>
+                <tr>
+                    <td class="late_notice">
+                        Payment due within 30 days of shipping date.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="divider">
+                        Amounts past due subject to a late fee.
+                    </td>
+                </tr>
+            </table>
+        
+</h3>
+    </div>
+    <div>
+        {% include "oml_address.html" %}
+        {% include "charges.html" %}
+
+    </div>
+    <div id="footerContent">
+        <table>
+            <tr>
+                <td class="invoice">
+                    
+INVOICE
+                </td>
+            </tr>
+            <tr>
+                <td class="invoice">
+                    
+PLEASE FORWARD TO YOUR BUSINESS OFFICE FOR PAYMENT
+                </td>
+            </tr>
+        <table>
+        
+{% include "footer.html" %}
+    </div>
+</body>

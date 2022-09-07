@@ -1,0 +1,105 @@
+<style type="text/css">
+    div.nav
+    {
+    margin-top: 10px;
+    position:relative;
+    }
+
+    table.nav
+    {
+    width:100%;
+    border-collapse:collapse;
+    }
+
+    td.nav
+    {
+    color: white;
+    fount-weight: bold;
+    background-color: #7A991A;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0px;
+    width: 20%;
+    }
+
+    a:link.nav, a:visited.nav
+    {
+    display:block;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#7A991A;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+    text-transform:uppercase;
+    }
+
+    a:hover.nav,a:active.nav
+    {
+    text-decoration: underline;
+    background-color:#7A991A;
+    }
+
+    a:link.nav_current, a:visited.nav_current
+    {
+    display:block;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#98bf21;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+    text-transform:uppercase;
+    }
+
+    a:hover.nav_current,a:active.nav_current
+    {
+    background-color:#98bf21;
+    }
+</style>
+
+<div id="navbar" class="nav" style="background-color:#7A991A; margin-left:-8px; margin-right:-8px; margin-bottom:0px">
+<table class="nav">
+    <tr>
+        <td class="nav" style="width:5%">
+        </td>
+        {% if page_summary %}
+        <td class="nav">
+            <a href="/summary" class="nav_current">Summary</a>
+        </td>
+        {% else %}
+        <td class="nav">
+            <a href="/summary" class="nav">Summary</a>
+        </td>
+        {% endif %}
+        {% if page_billing %}
+        <td class="nav">
+            <a href="/billing/" class="nav_current">Billing</a>
+        </td>
+        {% else %}
+        <td class="nav">
+            <a href="/billing/" class="nav">Billing</a>
+        </td>
+        {% endif %}
+        {% if page_results %}
+        <td class="nav">
+            <a href="/results/" class="nav_current">Test Results</a>
+        </td>
+        {% else %}
+        <td class="nav">
+            <a href="/results/" class="nav">Test Results</a>
+        </td>
+        {% endif %}
+        <td class="nav" style="width:15%">
+        </td>
+        <td class="nav">
+            <a href="/logout" class="nav">Logout</a>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div id="navbarframe" class="nav" style="background-color:#98bf21; height:8px; margin-left:-8px; margin-right:-8px; margin-top:0px; margin-bottom:0px">
+</div>
+

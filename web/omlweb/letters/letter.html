@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load custom_filters %}
+    <title>
+        Sterilizer # Bill
+    </title>
+    <style type="text/css">
+
+
+        @page {
+            size: letter;
+            top: 2.5in;
+            left: 1in;
+            right: 1in;
+            bottom: 1.2in;
+        @frame footer {
+            -pdf-frame-content: footerContent;
+            bottom: 0in;
+            margin-left: 0.5in;
+            margin-right: 0.5in;
+            height: 1.0in;
+        }
+        }
+
+        body
+        {
+        margin:0px;
+        padding:0px;
+        }
+
+	p.standard
+	{
+	font-family: "Times New Roman";
+	font-size: 16px;
+        text-align: justify;
+	text-indent: 30px;
+	line-height:105%;
+	}
+
+	p.header
+	{
+	font-family: "Times New Roman";
+	font-size: 18px;
+	line-height:105%;
+	}
+
+        td.standard
+        {
+        font-family: "Times New Roman";
+        font-size: 16px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:105%;
+        }
+
+	td.indent
+        {
+        font-family: "Times New Roman";
+        font-size: 16px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:105%;
+        margin-left: 3.0in;
+        }
+
+        td.small
+        {
+        font-family: "Times New Roman";
+        font-size: 12px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:120%;
+        }
+
+	table.footer
+        {
+        line-height:105%;
+        }
+
+
+
+
+</style>
+</head>
+
+<body>
+
+    <div id="address">
+        {% include "address.html" %}
+    </div>
+    <br>
+
+    <div id="saluatation">
+        {% include "salutation.html" %}
+    </div>
+
+    {% block content %}
+    <div id="content">
+    </div>
+    {% endblock %}
+    <br><br>
+
+    <div id="closing">
+        {% include "letter_closing.html" %}
+    <div>
+
+    <div id="footerContent">
+        {% include "footer.html" %}
+    </div>
+</body>

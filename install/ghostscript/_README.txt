@@ -1,0 +1,1 @@
+Ghostscript is required for GSView.

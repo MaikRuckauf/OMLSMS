@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div style="margin-top:20px; margin-bottom:40px">
+<table class="listing">
+    <tr>
+        <td class="listing_title">
+            Account Registration
+        </td>
+    </tr>
+    <tr>
+        <td>
+        {% include "registration.html" %}
+        </td>
+    </tr>
+</table>
+</div>
+
+<div style="margin-top:20px; margin-bottom:40px">
+<table class="listing">
+    <tr>
+        <td class="listing_title">
+            Account Activity
+        </td>
+    </tr>
+    <tr>
+        <td>
+        {% include "activity.html" %}
+        </td>
+    </tr>
+</table>
+</div>
+{% endblock %}

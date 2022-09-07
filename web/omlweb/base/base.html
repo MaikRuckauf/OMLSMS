@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+
+        body
+        {
+        background-image:url("http://127.0.0.1:8000/static/gradient.jpg");
+        background-repeat: no-repeat;
+        }
+
+        div.separator
+        {
+        color:white;
+        background-color:#56A0D3;
+        margin-left:-8px;
+        margin-right:-8px;
+        text-align:center;
+        }
+
+        h2
+        {
+        font-family: "Times New Roman";
+        font-size: 20px;
+        font-weight: bold;
+        }
+
+        table {
+        margin-left:auto;
+        margin-right:auto;
+        }
+
+        th
+        {
+        font-family: "Times New Roman";
+        font-size: 14px;
+        text-align: center;
+        vertical-align: bottom;
+        }
+
+        table.listing
+        {
+        width:8.5in;
+        border:4px solid #56A0D3;
+        border-collapse:collapse;"
+        }
+
+        td.listing_title
+        {
+        color:white;
+        background-color:#56A0D3;
+        font-size:20px;
+        font-weight:bold;
+        text-align:center;
+        }
+
+        a:link.button, a:visited.button
+        {
+        display:block;
+        font-weight:bold;
+        color:#FFFFFF;
+        background-color:#98bf21;
+        text-align:center;
+        padding:4px;
+        text-decoration:none;
+        text-transform:uppercase;
+        }
+
+        a:hover.button,a:active.button
+        {
+        background-color:#7A991A;
+        }
+
+        p.login {
+        font-family: "Times New Roman";
+        font-size: 18px;
+        padding-top: 4px;
+        padding-left: 20px;
+        }
+
+        p.login_error {
+        color: red;
+        font-family: "Times New Roman";
+        font-size: 18px;
+        padding-top: 4px;
+        padding-left: 20px;
+        }
+
+        td.h1 
+        {
+        color: white;
+        text-align: left;
+        font-family: "Times New Roman";
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        td.h2
+        {
+        color: white;
+        text-align: left;
+        font-family: "Times New Roman";
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 45px;
+        }
+
+        td.user
+        {
+        color: white;
+        text-align: right;
+        font-family: "Times New Roman";
+        font-size: 16px;
+        font-weight: normal;
+        }
+
+        td.dentist_info_field
+        {
+        font-family: "Times New Roman";
+        font-size: 14px;
+        text-align: right;
+        vertical-align: text-top;
+        width: 1.5in;
+        }
+
+        td.dentist_info
+        {
+        color: brown;
+        font-family: "Times New Roman";
+        font-size: 14px;
+        text-align: left;
+        vertical-align: text-top;
+        padding-left: 10px;
+        width: 2.5in;
+        }
+
+        th.charges_currency
+        {
+        text-align: right;
+        }
+
+        td.charges
+        {
+        font-family: "Courier New";
+        font-size: 14px;
+        text-align: center;
+        vertical-align: text-top;
+        width: 2.5in;
+        }
+
+        td.charges_currency
+        {
+        font-family: "Courier New";
+        font-size: 14px;
+        text-align: right;
+        vertical-align: text-top;
+        width: 2.5in;
+        }
+
+        td.charges_check
+        {
+        font-family: "Courier New";
+        font-size: 14px;
+        text-align: center;
+        vertical-align: text-top;
+        text-align:left;
+        padding-left:10px;
+        }
+
+        td.balance_due
+        {
+        font-weight: bold;
+        text-align:right;
+        padding-top:8px
+        }
+
+        td.total_due
+        {
+        font-weight: bold;
+        font-family: "Courier New";
+        font-size: 14px;
+        text-align: right;
+        padding-top:8px
+        }
+
+        td.late_notice {
+        text-align:center;
+        font-weight:bold;
+        }
+
+    </style>
+
+    <title>{% block title %}Oral Microbiology Laboratory{% endblock %}</title>
+</head>
+
+<body>
+    {% block titlebar %}
+    <div id="titlebar">
+        <table style="width:100%">
+            <tr>
+                <td class="h1">
+                    Oral Microbiology Laboratory
+                </td>
+                {% if username %}
+                <td class="user">
+                    Welcome, {{ username }}.
+                </td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td class="h2">
+                    Sterilization Monitoring Service
+                </td>
+                <td class="user">
+                    {% if today %}
+                    {{ today|date:"m/d/Y" }}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endblock %}
+
+    {% block navbar %}
+    <div id="navbar">
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    <div id="content">
+    </div>
+    {% endblock %}
+
+    {% block footer %}
+
+    <div class="separator" style="border-top:4px solid #5C8CBB; border-bottom:4px solid #5C8CBB">
+        {% include "footer.html" %}
+    </div>
+    {% endblock %}
+</body>
+</html>

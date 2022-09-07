@@ -1,0 +1,23 @@
+{% extends "letter.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<div id="content">
+    <p class="standard">The spore strip test ran in your sterilizer <b>#{{ test.renewal|renewal_id}}</b> on <b>{{ test.sample_date|date:"m/d/Y" }}</b> 
+    and received on <b>{{ test.start_date|date:"m/d/Y" }}</b> was positive, indicating that the strip was not sterilized.</p>
+
+    <p class="standard">
+    {% if contacted %}
+    Your office contact person was notified on <b>{{ today|date:"m/d/Y" }}</b> with suggestions for evaluating the problem.
+    {% else %}
+    We attempted to notify your office contact person by telephone on <b>{{ today|date:"m/d/Y" }}</b> with suggestions
+    for evaluating the problem.
+    {% endif %}
+    To determine the likely source of the problem, please have your staff consult the operator's manual for this 
+    sterilizer, and possibly the sterilizer manufacturer's technical service department</p>
+
+    <p class="standard">If you have additional questions, we will be glad to offer further suggestions to help you or your
+    staff resolve the problem.  However, responsibility for proper use and functioning of the sterilizer lies
+    between you and the manufacturer.</p>
+</div>
+{% endblock %}

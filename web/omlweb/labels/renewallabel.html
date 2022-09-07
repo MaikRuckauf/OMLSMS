@@ -1,0 +1,96 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Sterilizer Bill
+    </title>
+    <style type="text/css">
+
+
+        @font-face {
+            font-family: "Code 128"; 
+            src: url("{{ image_directory }}code128bwinlarge.ttf");
+        }
+
+        @page {
+            size: 3.0in,1.5in;
+            top: 0.0in;
+            left: 0.0in;
+            right: 0.0in;
+            bottom: 0.0in;
+        @frame col1row1 {
+            top: 0.1275in;
+            margin-left: 0.1875in;
+            margin-right: 0.0in;
+            height: 1.5in;
+        }
+        }
+
+        body
+        {
+        margin:0px;
+        padding:0px;
+        }
+
+	table
+        {
+	width: 3.0in;
+        }
+
+        td
+        {
+        font-family: "Courier New";
+        font-size: 10px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:100%;
+        }
+
+        td.label
+        {
+        height: 1.5in;
+        vertical-align: middle;
+        }
+
+        td.id
+        {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 250%;
+        padding-top: 2px;
+        }
+
+        td.barcode
+        {
+        width:3.0in;
+        text-align: center;
+        font-family: "Code 128";
+        font-size: 22px;
+        }
+
+</style>
+</head>
+
+<body>
+
+
+{% for z, dentist in zips|zip:dentists %}
+    {% for id, barcode in z.1|zip:z.2 %}
+        <table>
+        <tr><td>Sterilization Monitoring Service</td></tr>
+        <tr><td>Renewal Date: {{ today|date:"m/d/Y" }}</td></tr>
+        <tr><td class="id">{{ id|test_id }}</td></tr>
+        {% autoescape off %}
+        <tr><td class="barcode">{{ barcode }}</td></tr>
+        {% endautoescape %}
+        <tr><td style="padding-top: 2px">{% include "dentistname.html" %}</td></tr>
+        <tr><td>{{ z.0.comment }} </td></tr>
+        <tr><td>Lot: {{ lot.name }} Exp: {{ lot.expiration_date|date:"m/d/Y" }}</td></tr>
+        </table>
+<pdf:nextpage />
+    {% endfor %}
+{% endfor %}
+</body>

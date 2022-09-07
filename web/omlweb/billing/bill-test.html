@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                size: US-Letter;
+                margin: 1cm;
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 9cm;
+                    margin-right: 9cm;
+                    height: 1cm;
+                }
+            }
+
+
+
+body
+{
+margin:0;
+padding:0;
+}
+
+
+
+table {
+width: 7.5in;
+margin-left: auto;
+margin-right: auto;
+}
+
+table.charges {
+margin-top:16px
+}
+
+td.invoice {
+font-family: courier new;
+font-size: 22px;
+font-style: italic;
+font-weight: bold;
+text-decoration: underline;
+text-align: center;
+}
+
+td.address_dentist {
+font-family: "Times New Roman";
+font-size: 14px;
+width: 5.0in;
+}
+
+td.sterilization {
+font-family: "Courier New";
+font-size: 14px;
+font-weight: bold;
+text-align: center;
+}
+
+th.charges {
+border-color: black;
+border-style: solid;
+border-width: 1px;
+padding-left: 4px;
+padding-right: 4px;
+}
+
+
+
+th.charges_currency {
+border-color: black;
+border-style: solid;
+border-width: 1px;
+padding-left: 4px;
+padding-right: 4px;
+}
+
+td.charges {
+border-color: black;
+border-style: solid;
+border-width: 1px;
+padding-left: 4px;
+padding-right: 4px;
+}
+
+
+td.charges_currency {
+border-color: black;
+border-style: solid;
+border-width: 1px;
+padding-left: 4px;
+padding-right: 4px;
+text-align: right;
+}
+
+
+td.notice {
+width: 4.5in;
+font-family: "Times New Roman";
+font-size: 14px;
+}
+
+td.address_oml {
+font-family: "Courier New";
+font-size: 14px;
+font-weight: bold;
+}
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <P>RENDER MY CONTENT</P>
+        </div>
+        <div id="footerContent">
+            {%block page_foot%}
+                Page <pdf:pagenumber>
+            {%endblock%}
+        </div>
+    </body>
+</html>

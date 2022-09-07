@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load custom_filters %}
+    <title>
+        Sterilizer # Bill
+    </title>
+    <style type="text/css">
+
+
+        @page {
+            size: letter;
+            top: 3.0in;
+            left: 1in;
+            right: 1in;
+            bottom: 2.3in;
+	@frame letterhead {
+            -pdf-frame-content: letterheadContent;
+            top: 1in;
+            margin-left: 1in;
+            margin-right: 1in;
+            height: 1.0in;
+        }
+        @frame header {
+            -pdf-frame-content: headerContent;
+            top: 2.0in;
+            margin-left: 1in;
+            margin-right: 1in;
+            height: 1.2in;
+        }
+        @frame footer {
+            -pdf-frame-content: footerContent;
+            bottom: 0in;
+            margin-left: 0.5in;
+            margin-right: 0.5in;
+            height: 2.0in;
+        }
+        }
+
+        body
+        {
+        margin:0px;
+        padding:0px;
+        }
+
+
+
+        table {
+        width: 7.5in;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        td.small
+        {
+        font-family: "Times New Roman";
+        font-size: 12px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:110%;
+        }
+
+	table.footer
+        {
+        line-height:105%;
+        }
+
+        table.charges {
+        width: 7.5in;
+        margin-top: 20px;
+        padding-top: 4px;
+        }
+
+        td.invoice {
+        font-family: courier new;
+        font-size: 22px;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+        }
+
+        td.oml_address {
+        font-family: "Times New Roman";
+        font-size: 12px;
+        width: 5.0in;
+	line-height: 105%;
+        }
+
+        td.sterilization {
+        font-family: "Courier New";
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+	line-height: 105%;
+        }
+
+        th.charges {
+        font-family: "Courier New";
+        text-decoration: underline;
+        vertical-align: bottom;
+        font-size: 12px;
+        text-align: center;
+        }
+
+
+        td.charges {
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: center;
+        }
+
+
+        td.notice {
+        width: 8.5in;
+        font-family: "Times New Roman";
+        font-size: 14px;
+        font-style: italic;
+        text-align: center;
+        }
+
+	table.key {
+        -pdf-keep-with-next: true;
+        }
+
+	tr.keepwithnext {
+        font-size: 10px;
+        -pdf-keep-with-next: true;
+        }
+
+        td.key {
+        width: 8.5in;
+        font-family: "Courier New";
+        font-size: 12px;
+        text-align: center;
+	line-height: 105%;
+        }
+
+        td.table_title {
+        font-family: "Courier New";
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: bottom;
+        }
+
+        td.standard {
+        font-family: "Times New Roman";
+        font-size: 14px;
+        }
+
+	td.indent
+        {
+        font-family: "Times New Roman";
+        font-size: 16px;
+        text-align: left;
+        vertical-align: text-top;
+	line-height:105%;
+        margin-left: 3.0in;
+        }
+
+</style>
+</head>
+
+<body>
+
+    <div id="headerContent">
+        {% include "address.html" %}
+    </div>
+        <table>
+        <tr><td class="sterilization">Sterilization Monitoring Report</tr></td>
+        </table>
+        {% for summary in result_summaries %}
+        <table style="margin-top:20px">
+            <tr>
+                <td class="table_title">
+                    Sterilizer: #{{ summary.sterilizer|zfill:7 }} ({{ summary.sterilizer.comment }})
+                </td>
+            </tr>
+        </table>
+        {% include "result.html" %}
+        {% endfor %}
+        <br>
+        <table class="key">
+            <tr>
+                <td class="key">
+                    Negative = no growth observed; spores killed in sterilizer.
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    Positive = spores not killed in sterilizer.
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    Pending = test begun; results not yet available.
+                </td>
+            </tr>
+        </table>
+    <div id="footerContent">
+        <table style="margin-bottom: 0.4in">
+            <tr>
+                <td class="notice">
+                    <i>Please contact us if you notice any discrepancies with your own testing records.</i>
+                </td>
+            </tr>
+            <tr>
+                <td class="notice">
+                    <i>Don't forget to place the correct bar code sticker on the envelopes you send to us.  Thank You.</i>
+                </td>
+            </tr>
+        </table>
+        {% include "footer.html" %}
+    </div>
+</body>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+{% for summary in result_summaries %}
+<div style="margin-top:20px; margin-bottom:20px">
+    <table class="listing">
+        <tr>
+            <td class="listing_title">
+            Sterilizer #{{ summary.sterilizer.id|zfill:5 }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+            {% include "result.html" %}
+            </td>
+        </tr>
+    </table>
+    <table style="width:7.5in">
+        <tr>
+            <td style="text-align:right">
+                <a href="/results/print_results/{{ summary.sterilizer.id }}">
+                Print Report
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
+{% endblock %}

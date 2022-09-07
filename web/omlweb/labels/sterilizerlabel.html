@@ -1,0 +1,20 @@
+{% load custom_filters %}
+<table class="sterilizer">
+<tr><td class="sterilizer" colspan="2">
+    Sterilization Monitoring Service
+</td></tr>
+<tr>
+<td class="sterilizer">
+Sterilizer ID:
+</td>
+<td class="sterilizer_id">
+<b>{{ sterilizer.id|zfill:7 }}</b>
+</td>
+</tr>
+<tr><td class="sterilizer" colspan="2">
+{% include "dentistname.html" %}
+</td></tr>
+<tr><td class="sterilizer_comment" colspan="2">
+<b>{{ sterilizer.comment }}</b>
+</td></tr>
+</table>

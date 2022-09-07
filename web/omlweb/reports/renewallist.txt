@@ -1,0 +1,6 @@
+{% load custom_filters %}{{ header }} {{ begin_date }} to {{ end_date }}.  Report printed {% now "m/d/Y h:i a" %}{% autoescape off %}
+Office                                       Renewal   Renewal Date    Days Unpaid       Fee  Late Fee      Paid    Check #
+{% for renewal, name in renewals|zip:names %}
+{{ name|truncatechars:"38"|ljust:"40" }}{{ renewal.id|renewal_id|rjust:"12"}}{{ renewal.renewal_date|date:"m/d/y"|rjust:"15" }}{% if renewal.renewal_fee|my_add:renewal.late_fee > renewal.payment_amount %}{{ renewal.renewal_date|days_overdue|rjust:"15" }}{% else %}         (Paid){% endif %}{{ renewal.renewal_fee|currency|rjust:"10" }}{{ renewal.late_fee|default:0|currency|rjust:"10" }}{{ renewal.payment_amount|default:0|currency|rjust:"10" }}    {{ renewal.check_num }}{% empty %}
+No items found.{% endfor %}
+{% endautoescape %}

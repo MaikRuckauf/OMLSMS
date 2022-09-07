@@ -1,0 +1,35 @@
+{% extends "letter.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<div id="content">
+
+    <p class="standard">
+    {% if compliance %}
+    Congratulations!  Your sterilizer #{{ sterilizer.id|zfill:7 }} was found to be in compliance 
+    {% else %}
+    Your sterilizer #{{ sterilizer.id|zfill:7 }} was <b>not in compliance</b>
+    {% endif %}
+    for the year {{ report_year }}, according to the standards that have been set by the 
+    Sterilization Monitoring Service, at the University of North Carolina, School of Dentistry.
+    Your sterilizer was tested {{ number_of_tests }} times during the year.  Compliance 
+    requires that a sterilizer be tested 42 weeks out of the calendar year.
+    </p>
+
+    <p class="standard">
+    {% if compliance %}
+    We here at the Sterilization Monitoring Service would like to commend you and your
+    staff for the outstanding effors you have put forth in maintaining a high standard of
+    patient care.
+    {% else %}
+    Your office may not have met compliance requirements due to sending testing
+    envelopes to the laboratory without bar codes or due to one or more 
+    delinquent accounts.
+    </p>
+    <p class="standard">
+    If you have any questions, please feel free to contact us for further assistance.<p>
+    {% endif %}
+    </p>
+
+</div>
+{% endblock %}

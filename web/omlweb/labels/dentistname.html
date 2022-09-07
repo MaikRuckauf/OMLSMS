@@ -1,0 +1,5 @@
+{% if dentist.practice_name %}
+{{ dentist.practice_name }}
+{% else %}
+{{ dentist.title }} {{ dentist.fname }} {{ dentist.lname }}
+{% endif %}

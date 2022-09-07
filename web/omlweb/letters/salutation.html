@@ -1,0 +1,13 @@
+<p class="standard" style="text-indent:0px">
+{% if dentist.lname %}
+
+            Dear {{ dentist.title }} {{ dentist.lname }},
+{% else %}
+    {% if dentist.contact_lname %}
+            Dear {{ dentist.contact_title }} {{ dentist.contact_lname }},
+    {% else %}
+            {{ dentist.practice_name }},
+    {% endif %}
+
+{% endif %}
+</p>

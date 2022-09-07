@@ -1,0 +1,9 @@
+{% if practiceName %}
+{{ practiceName }}<br>
+{% else %} {{ title }} {{ firstName }} {{ lastName }}<br>
+{% endif %}
+{{ address1 }}<br>
+{% if address2 %}
+{{ address2 }}<br>
+{% endif %}
+{{ city }}, {{ state }} {{ zip }}

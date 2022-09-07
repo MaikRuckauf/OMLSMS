@@ -1,0 +1,104 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Sterilizer Bill
+    </title>
+    <style type="text/css">
+
+
+        @page {
+            size: letter;
+            top: 0.5in;
+            left: 0.125in;
+            right: 0.125in;
+            bottom: 0.5in;
+        {% for i in 10|times %}
+        @frame col1row{{ i }} {
+            top: {{ i }}.675in;
+            margin-left: 0.35in;
+            margin-right: 5.625in;
+            height: 1.0in;
+        }
+        {% endfor %}
+        {% for i in 10|times %}
+        @frame col2row{{ i }} {
+            top: {{ i }}.675in;
+            margin-left: 3.1in;
+            margin-right: 2.875in;
+            height: 1.0in;
+        }
+        {% endfor %}
+        {% for i in 10|times %}
+        @frame col3row{{ i }} {
+            top: {{ i }}.675in;
+            margin-left: 5.85in;
+            margin-right: 0.125in;
+            height: 1.0in;
+        }
+        {% endfor %}
+        }
+
+        body
+        {
+        margin:0px;
+        padding:0px;
+        }
+
+
+        table.dentist {
+        width: 2.75in;
+        height: 1in;
+        font-family: "Times New Roman";
+        font-size: 15px;
+        text-align:left;
+        line-height: 100%;
+        }
+
+        table.sterilizer {
+        width: 2.75in;
+        height: 1in;
+        font-family: "Times New Roman";
+        font-size: 12px;
+        text-align:left;
+        line-height: 100%;
+        }
+
+        td.sterilizer {
+        font-family: "Times New Roman";
+        font-size: 12px;
+        text-align: left;
+        line-height: 100%;
+        }
+
+	td.sterilizer_id {
+        width: 75%;
+        font-family: "Times New Roman";
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        line-height: 100%;
+	}
+
+	td.sterilizer_comment {
+        font-family: "Courier New";
+        font-size: 12px;
+        font-weight: bold;
+        text-align: left;
+        line-height: 100%;
+	}
+
+</style>
+</head>
+
+<body>
+
+
+{% for i in skip|times %}
+<pdf:nextframe />
+{% endfor %}
+{% block content %}
+{% endblock %}
+</body>

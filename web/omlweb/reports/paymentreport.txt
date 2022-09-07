@@ -1,0 +1,6 @@
+{% load custom_filters %}{% autoescape off %}All renewal payments entered on {{ renewals.0.payment_date|date:"F j, Y" }} as of {% now "m/d/Y h:i a" %}:
+Office/Renewal/Check Number/Amount
+{% for renewal, name in renewals|zip:names %}
+{{ name|truncatechars:"40"|ljust:"44" }}	{{ renewal.payment_amount|default:0|payment }}	{{ renewal.check_num|ljust:"15" }}	{{ renewal.id|renewal_id }}{% empty %}
+No payments found.{% endfor %}
+{% endautoescape %}

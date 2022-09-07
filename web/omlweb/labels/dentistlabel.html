@@ -1,0 +1,16 @@
+<table class="dentist">
+<tr><td>
+{% include "dentistname.html" %}
+</td></tr>
+<tr><td>
+{{ dentist.address1 }}
+</td></tr>
+{% if dentist.address2 %}
+<tr><td>
+    {{ dentist.address2 }}
+</td></tr>
+{% endif %}
+<tr><td>
+{{ dentist.city }}, {{ dentist.state }} {{ dentist.zip }}
+</td></tr>
+</table>

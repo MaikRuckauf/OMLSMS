@@ -1,0 +1,1 @@
+Pywin32 are windows extensions for Python.  Required for django-mssql.

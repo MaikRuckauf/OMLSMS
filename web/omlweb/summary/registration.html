@@ -1,0 +1,68 @@
+<table>
+    <tr>
+        <td class="dentist_info_field">
+            User name:
+        </td>
+        <td class="dentist_info">
+            {{ username }}
+        </td>
+        <td class="dentist_info_field">
+            Address:
+        </td>
+        <td class="dentist_info">
+            {{ dentist.address1 }}<BR>
+            {{ dentist.address2 }}
+            {{ dentist.city }}, {{ dentist.state }} {{ dentist.zip }}
+        </td>
+    </tr>
+    <tr>
+        <td class="dentist_info_field">
+            Practice name:
+        </td>
+        <td class="dentist_info">
+            {{ dentist.practice_name|default:"(not provided)" }}
+        </td>
+        <td class="dentist_info_field">
+            Phone number:
+        </td>
+        <td class="dentist_info">
+            {{ dentist.phone|default:"(not provided)" }}
+        </td>
+    </tr>
+    <tr>
+        <td class="dentist_info_field">
+            Dentist:
+        </td>
+        <td class="dentist_info">
+            {% if dentist.fname or dentist.lname %}
+            {{ dentist.title }} {{ dentist.fname }} {{ dentist.lname }}
+            {% else %}
+            (not provided)
+            {% endif %}
+        </td>
+        <td class="dentist_info_field">
+            Fax number:
+        </td>
+        <td class="dentist_info">
+            {{ dentist.fax|default:"(not provided)" }}
+        </td>
+    </tr>
+    <tr>
+        <td class="dentist_info_field">
+            Person to contact:
+        </td>
+        <td class="dentist_info">
+            {% if dentist.fname or dentist.lname %}
+            {{ dentist.contact_title }} {{ dentist.contact_fname }} {{ dentist.contact_lname }}
+            {% else %}
+            (not provided)
+            {% endif %}
+        </td>
+        <td class="dentist_info_field">
+            Email:
+        </td>
+        <td class="dentist_info">
+            {{ dentist.email|default:"(not provided)" }}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,6 @@
+{% load custom_filters %}{{ title }}.  (Report printed {% now "m/d/Y h:i a" %}){% autoescape off %}
+
+Renewal      Test   Strip         Run       Start        Stop   R   C
+{% for test in tests %}
+{{ test.renewal_id|renewal_id|ljust:"10" }}{{ test.test_num|rjust:"6" }}{% if test.strip_num %}{{ test.strip_num|rjust:"8" }}{% else %}     N/A{% endif %}{{ test.sample_date|date:"m/d/y"|rjust:"12" }}{{ test.start_date|date:"m/d/y"|rjust:"12" }}{{ test.result_date|date:"m/d/y"|rjust:"12" }}{{ test.result|test_result|rjust:"4" }}{{ test.control_result|test_result|rjust:"4" }}{% endfor %}
+{% endautoescape %}

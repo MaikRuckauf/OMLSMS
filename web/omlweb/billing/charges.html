@@ -1,0 +1,115 @@
+{% load custom_filters %}
+
+{% if not payment.renewals %}
+<P>No renewals found.</P>
+{% else %}
+<table class="charges" style="font-family:courier new; font-size:12; width:7.5in; border-collapse:collapse">
+
+    <tr>
+
+        <th class="charges" style="width:1.0in">
+            Renewal ID
+        </th>
+
+        <th class="charges" style="width:0.9in">
+            Date Sent
+        </th>
+
+        <th class="charges" style="width:1.0in">
+            Test Period
+        </th>
+
+        <th class="charges_currency" style="width:0.75in">
+            Fee
+        </th>
+
+        <th class="charges_currency" style="width:0.75in">
+            Late Fee
+        </th>
+
+        <th class="charges_currency" style="width:0.75in">
+            Paid
+        </th>
+
+        <th class="charges_check" style="width:1.6in">
+            Check #
+        </th>
+
+        <th class="charges_currency" style="width:0.75in">
+            Balance
+        </th>
+
+    </tr>
+    {% for renewal in payment.renewals %}
+    <tr {% if page_billing %}{% cycle '' 'style="background-color:#d9d9d9"' %} {% endif %}>
+
+        <td class="charges">
+            #{{ renewal.id|renewal_id }}
+        </td>
+
+        <td class="charges">
+            {{ renewal.renewal_date|date:"m/d/Y" }}
+        </td>
+
+        <td class="charges">
+            {{ renewal.num_tests }} Weeks
+        </td>
+
+        <td class="charges_currency">
+            {{ renewal.renewal_fee|default:0|currency }}
+        </td>
+
+        <td class="charges_currency">
+            {{ renewal.late_fee|default:0|currency }}
+        </td>
+
+        <td class="charges_currency">
+            {{ renewal.payment_amount|default:0|currency }}
+        </td>
+
+        <td class="charges_check">
+            {{ renewal.check_num }}
+        </td>
+
+        <td class="charges_currency">
+            {% for balance in payment.balances %}
+            {% if renewal.id = balance.renewal_id %}
+            {{ balance.amount|default:0|currency }}
+            {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    <tr>
+
+        <td colspan="7" class="balance_due">
+	{% if payment.amount < 0 %}
+            OVERPAID:
+	{% else %}
+            BALANCE DUE:
+	{% endif %}
+        </td>
+
+        <td class="total_due">
+            {{ payment.amount|default:0|currency }}
+        </td>
+
+    </tr>
+    {% if payment.due_date %}
+    <tr>
+
+        <td colspan="8" class="late_notice">Note: Balance due before {{ payment.due_date }}
+        </td>
+
+    </tr>
+    {% endif %}
+    {% if payment.overdue %}
+    <tr>
+
+        <td colspan="8" class="late_notice">Payment is overdue!</td>
+
+    </tr>
+    {% endif %}
+</table>
+
+{% endif %}

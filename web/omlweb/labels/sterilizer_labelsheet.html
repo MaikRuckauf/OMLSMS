@@ -1,0 +1,9 @@
+{% extends "labelsheet.html" %}
+{% load custom_filters %}
+
+{% block content %}
+    {% for dentist, sterilizer in dentists|zip:sterilizers %}
+        {% include "sterilizerlabel.html" %}
+        {{ forloop.counter|next_label:skip|safe }}
+    {% endfor %}
+{% endblock %}

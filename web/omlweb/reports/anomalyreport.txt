@@ -1,0 +1,17 @@
+{% load custom_filters %}Anomaly Report {% now "m/d/Y h:i a" %}
+
+The following sterilizers are on paid accounts but have been suspended and will
+not receive renewals.  If they are in the process of being discontinued and
+have no tests remaining, they should be marked inactive.  If they were suspended
+due to lack of payment, the suspension should be removed.
+{% for sterilizer, name in suspended|zip:s_names %}
+{{ name|ljust:36 }}#{{ sterilizer.id|zfill:7 }}{% empty %}
+No sterilizers meet the criteria.{% endfor %}
+
+
+The following sterilizers are on paid, active accounts. However, they were
+overlooked for renewal and are not marked to receive one.  These sterilizers
+should be either marked inactive or marked to renew, as appropriate.
+{% for sterilizer, name in overlooked|zip:o_names %}
+{{ name|ljust:36 }}#{{ sterilizer.id|zfill:7 }}{% empty %}
+No sterilizers meet the criteria.{% endfor %}

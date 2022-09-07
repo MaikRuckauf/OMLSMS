@@ -1,0 +1,36 @@
+<table>
+    <tr>
+        <td class="indent">
+            Sincerely,
+        </td>
+    </tr>
+    {% if user.signature_file %}
+    <tr>
+        <td class="indent"><img src="{{ image_directory }}{{ user.signature_file }}">
+    </td></tr>
+    {% else %}
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="indent">
+            {{ user.name_title }} {{ user.first_name }} {{ user.last_name }}
+        </td>
+    </tr>
+    <tr>
+        <td class="indent">
+            {{ user.title }}
+        </td>
+    </tr>
+    <tr>
+        <td class="indent">
+            Oral Microbiology Laboratories
+        </td>
+    </tr>
+</table>

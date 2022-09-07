@@ -1,0 +1,14 @@
+{% load custom_filters %}{% autoescape off %}                                                                                    Inactivty Report
+
+                                               {% for week in weeks %}{{ week.0|date:"m/d/y"|rjust:11 }}{% endfor %}
+                                                 {% for week in weeks %}    to     {% endfor %}
+Office                               Sterilizer{% for week in weeks %}{{ week.1|date:"m/d/y"|rjust:11 }}{% endfor %}
+----------------------------------   ----------   --------   --------   --------   --------   --------   --------   --------   --------
+{% for sterilizer, name, records in sterilizers|zip:names|zip2:activity %}
+{{ name|ljust:36 }}{{ sterilizer.id|zfill:7|rjust:10 }}  {% for record in records %}{{ record|center:11 }}{% endfor %}
+{% endfor %}
+
+        x = missed test
+        - = test received
+        (No marks are shown for weeks prior to sterilizer activation)
+{% endautoescape %}

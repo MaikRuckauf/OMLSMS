@@ -1,0 +1,46 @@
+{% load custom_filters %}
+
+<table style="border-collapse:collapse">
+    <tr>
+        <th class="activity" style="width:1in">Sterilizer</th>
+        <th class="activity" style="width:1in">Total Due</th>
+        <th class="activity" style="width:1in">Due By</th>
+        <th class="activity" style="width:1.5in">Number of <br>Recent Tests</th>
+        <th class="activity" style="width:1.5in">Number of <br>Recent Positives</th>
+        <th class="activity" style="width:2in">Date of Recent Positive</th>
+    </tr>
+    {% for sterilizer in sterilizers %}
+    <tr {% cycle '' 'style="background-color:#d9d9d9"' %}>
+        <td style="text-align:center">#{{ sterilizer.id|zfill:5 }}</td>
+        <td style="text-align:center">{{ sterilizer.total_due|default:0|currency }}</td>
+        {% if sterilizer.due_date|date:"m/d/Y" %}
+        {% if not sterilizer.overdue %}
+        <td style="text-align:center">
+            <a href="/billing/print_bill/{{ sterilizer.id|zfill:5 }}">
+                {{ sterilizer.due_date|date:"m/d/Y" }}
+            </a>
+        </td>
+        {% else %}
+        <td style="text-align:center">
+            <a href="/billing/print_bill/{{ sterilizer.id|zfill:5 }}">
+                overdue
+            </a>
+        </td>
+        {% endif %}
+        {% else %}
+        <td style="text-align:center">
+            <a href="/billing/print_bill/{{ sterilizer.id|zfill:5 }}">
+                {{ sterilizer.due_date|default:"paid" }}
+            </a>
+        </td>
+        {% endif %}
+        <td style="text-align:center">{{ sterilizer.num_recent_tests }}</td>
+        <td style="text-align:center">{{ sterilizer.num_recent_positives }}</td>
+        <td style="text-align:center">
+            <a href="/results/print_results/{{ sterilizer.id|zfill:5 }}">
+                {{ sterilizer.last_positive_date|date:"m/d/Y"|default:"no recent positive" }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

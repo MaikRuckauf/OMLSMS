@@ -1,0 +1,27 @@
+All renewal payments entered on June 5, 2015 as of 06/05/2015 02:48 p.m.:
+Office/Renewal/Check Number/Amount
+
+Moses Watson lll                            	  70.00	1887           	0136001-304
+McCrimmon Family Dentistry,         75.00	05852         	0129902-304
+Boone, Alison                               	  75.00	1759           	0133802-304
+Alexander, Thomas                         	  75.00	4605           	0001001-304
+Alexander, Thomas                         	  75.00	4605           	0001003-304
+Nelson, Lionel                              	  75.00	976047       	0008902-302
+Gurley & Hall (C2),                       	  75.00	19980         	0035401-304
+Schmidt, Robert                             	  75.00	1006           	0046701-304
+Shehan & Smith,                             	  75.00	98082         	0051702-304
+Phillips Jr., S. Warren                     	  75.00	6966           	0053001-304
+Mauldin & Rokos, Laura              	  75.00	06846         	0054303-304
+McKinley, Susan M.                        	  75.00	8348           	0055701-304
+Darab & Richardson (S),               	  75.00	6881           	0057901-304
+Classic City Orthodontics,                75.00	0999           	0059102-304
+Classic City Orthodontics,                75.00	0996           	0059103-304
+Overton, James                              	  75.00	26847         	0062301-304
+Thompson Family Dentistry,             75.00	05735         	0119601-304
+Riccobene (Flowers),                         75.00	30814         	0123501-304
+Legette, Tracie                             	  75.00	7685902     	0124401-304
+Legette, Tracie                             	  75.00	7685902     	0124403-304
+Browder, Michael                             110.00	11204         	0002901-298
+McCrimmon Family Dentistry,      	 150.00	05852         	0129901-304
+Browder, Michael                             210.00	11204         	0002901-301
+

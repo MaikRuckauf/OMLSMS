@@ -1,0 +1,6 @@
+{% load custom_filters %}{% autoescape off %}Lot Recall Report
+Office                                      Renewal
+{% for renewal, name in renewals|zip:names %}
+{{ name|truncatechars:"40"|ljust:"44" }}{{ renewal.id|renewal_id|ljust:"15"}}{% empty %}
+No renewals found using that lot.{% endfor %}
+{% endautoescape %}

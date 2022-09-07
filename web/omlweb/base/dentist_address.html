@@ -1,0 +1,39 @@
+<table>
+    <tr>
+        <td class="address_dentist">
+            {% if dentist.practice_name %}
+
+            {{ dentist.practice_name }}<br>
+
+            {% else %} {{ dentist.title }} {{ dentist.fname }} {{ dentist.lname }}<br>
+
+            {% endif %}
+
+        </td>
+        <td class="sterilization">
+             Sterilization
+        </td>
+    </tr>
+    <tr>
+        <td class="address_dentist">
+            {{ dentist.address1 }}
+        </td>
+        <td class="sterilization">
+            Monitoring Service
+        </td>
+    </tr>
+    {% if dentist.address2 %}
+    <tr>
+        <td  class="address_dentist">
+
+            {{ dentist.address2 }}
+        </td>
+    </tr>
+    {% endif %}
+
+    <tr>
+        <td  class="address_dentist">
+            {{ dentist.city }}, {{ dentist.state }} {{ dentist.zip }}
+        </td>
+    </tr>
+</table>

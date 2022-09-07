@@ -1,0 +1,54 @@
+{% load custom_filters %}OMLSMS Accounts Summary {% now "m/d/Y h:i a" %}
+For {% if dentist %}{% if dentist.lname %}{{ dentist.fname }} {{ dentist.lname }}{% else %}{{ dentist.practice_name }}{% endif %}{% else %}all dentists (active renewals only){% endif %}
+With renewal dates starting {{ start_date|date:"m/d/Y" }} and ending {{ end_date|date:"m/d/Y" }}
+
+Tests Completed: {{ total_tests|ljust:6 }}
+
+
+Renewal Fees:           {{ total_charged|currency|rjust:15 }}
+
+Renewal Fee Payments:   {{ total_received|currency|rjust:15 }}
+
+Late Fees:              {{ total_late_fees|currency|rjust:15 }}
+
+Late Fee Payments:      {{ total_late_fee_payments|currency|rjust:15 }}
+
+Unassigned Payments:    {{ total_payments_pending|currency|rjust:15 }}
+
+                        ===============
+Balance:                {{ total_balance|currency|rjust:15 }}
+
+
+
+
+
+Total Renewals:  {{ total_renewals|ljust:6 }}
+
+
+   Days for Payment           N       Amount Paid
+  -----------------      ------    --------------
+        (No charge)      {{ total_uncharged|rjust:6 }}             $0.00
+       0 -  29 days      {{ paid.0|rjust:6 }}   {{ balance.0|currency|rjust:15 }}
+      30 -  59 days      {{ paid.1|rjust:6 }}   {{ balance.1|currency|rjust:15 }}
+      60 -  89 days      {{ paid.2|rjust:6 }}   {{ balance.2|currency|rjust:15 }}
+      90 - 119 days      {{ paid.3|rjust:6 }}   {{ balance.3|currency|rjust:15 }}
+        >= 120 days      {{ paid.4|rjust:6 }}   {{ balance.4|currency|rjust:15 }}
+                         ------   ---------------
+                         {{ num_paid|rjust:6 }}   {{ total_payments|currency|rjust:15 }}
+
+  Still Outstanding           N           Balance
+  -----------------      ------   ---------------
+       0 -  29 days      {{ unpaid.0|rjust:6 }}   {{ unpaid_balance.0|currency|rjust:15 }}
+      30 -  59 days      {{ unpaid.1|rjust:6 }}   {{ unpaid_balance.1|currency|rjust:15 }}
+      60 -  89 days      {{ unpaid.2|rjust:6 }}   {{ unpaid_balance.2|currency|rjust:15 }}
+      90 - 119 days      {{ unpaid.3|rjust:6 }}   {{ unpaid_balance.3|currency|rjust:15 }}
+        >= 120 days      {{ unpaid.4|rjust:6 }}   {{ unpaid_balance.4|currency|rjust:15 }}
+                         ------   ---------------
+                         {{ num_unpaid|rjust:6 }}   {{ total_unpaid|currency|rjust:15 }}
+
+
+
+
+{% for item in payments_pending %}
+Payment pending assignment on Renewal {{ item.renewal.id|renewal_id }} {{ item.balance|currency|rjust:12 }} {{ item.renewal.renewal_date|date:"m/d/Y" }}.
+{% endfor %}

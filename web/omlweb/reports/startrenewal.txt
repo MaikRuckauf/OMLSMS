@@ -1,0 +1,7 @@
+{% load custom_filters %}Renewals started on {% now "m/d/Y h:i a" %}{% autoescape off %}
+
+{% for sterilizer, name in sterilizers|zip:names %}
+{% if sterilizer %}{{ name|truncatechars:"38"|ljust:"40" }}{{ sterilizer.id|zfill:7|ljust:"9"}}{{ sterilizer.num_tests }}{% else %}{% endif %}{% empty %}
+No renewals printed.{% endfor %}
+{% endautoescape %}
+
