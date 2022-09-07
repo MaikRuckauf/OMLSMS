@@ -28,6 +28,8 @@
 # History
 # 2010-12-10: quote column names, reported by Beres Botond. 
 
+# Adding a comment here for testing purposes
+
 def insert_many(objects, using="default"):
     """Insert list of Django objects in one SQL query. Objects must be
     of the same Django model. Note that save is not called and signals
