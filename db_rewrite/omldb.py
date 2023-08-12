@@ -168,31 +168,31 @@ class MainWindow(QMainWindow, ui.Ui_mainWindow):
             show.show(self.bookmark)
             self.currentChild = show
     
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_dentistsPushButton_clicked(self):
         self.showMainDialog(self.dentistDlg)
         
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_sterilizersPushButton_clicked(self):
         self.showMainDialog(self.sterilizerDlg)
 
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_lotsPushButton_clicked(self):
         self.showMainDialog(self.lotDlg)
 
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_renewalsPushButton_clicked(self):
         self.showMainDialog(self.renewalDlg)
 
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_testsPushButton_clicked(self):
         self.showMainDialog(self.testDlg)
 
-    @pyqtSignature("")
+    @pyqtSlot("")
     def on_reportsPushButton_clicked(self):
         self.showMainDialog(self.reportDlg)
     
-    @pyqtSignature("int")
+    @pyqtSlot("int")
     def on_userComboBox_activated(self, int):
         self.user = self.userList[int]
         if self.currentChild:
