@@ -10,7 +10,7 @@ import ui, logindlg
 
 sys.path.append(OMLWEB_PATH)
 from django.conf import settings
-import omlweb
+import omlweb 
 
 import printpdf
 import ctypes

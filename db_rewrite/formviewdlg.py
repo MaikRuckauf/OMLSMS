@@ -232,41 +232,41 @@ class FormViewDlg(MainDlg):
             )
         super(FormViewDlg, self).show()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_findPushButton_clicked(self):
         findDlg = FindDlg(self.windowTitle(), self.records, self.findValues, self.findSizes, self)
         if findDlg:
             self.findRecord(findDlg.exec_())
        
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekFirstPushButton_clicked(self):
         self.setRecordNum(0)
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekPreviousPushButton_clicked(self):
         self.decrementRecordNum()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekNextPushButton_clicked(self):
         self.incrementRecordNum()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekLastPushButton_clicked(self):
         if self.records:
             self.setRecordNum(len(self.records) - 1)
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_insertPushButton_clicked(self):
         self.inserting = self.prepareNewRecord()
         if self.inserting:
             self.loadForm(self.inserting)
             self.enableEditing()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_modifyPushButton_clicked(self):
         self.enableEditing()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_savePushButton_clicked(self):
         self.disableEditing()
         if self.inserting:
@@ -282,7 +282,7 @@ class FormViewDlg(MainDlg):
             self.inserting = None
             self.loadRecords(id)
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_cancelPushButton_clicked(self):
         self.disableEditing()
         self.inserting = None
@@ -313,7 +313,7 @@ class FormViewPartialLoadDlg(FormViewDlg):
     # Redefine seek buttons to handle partial loading by month
     #
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekFirstPushButton_clicked(self):
         if self.recordNum > 0:
             self.setRecordNum(0)
@@ -323,7 +323,7 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.incrementDateRange()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekPreviousPushButton_clicked(self):
         if self.recordNum > 0:
             self.decrementRecordNum()
@@ -333,7 +333,7 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.incrementDateRange()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekNextPushButton_clicked(self):
         if self.records and self.recordNum < len(self.records) - 1:
             self.incrementRecordNum()
@@ -343,7 +343,7 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.decrementDateRange()
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_seekLastPushButton_clicked(self):
         if self.incrementDateRange():
             self.setRecordNum(0)
@@ -392,7 +392,7 @@ class FormViewPartialLoadDlg(FormViewDlg):
             record_date = self.getRecordDate(id)
             return self.findDatedRecord(id, record_date)
 
-    @pyqtSlot("")
+    #@pyqtSlot("")
     def on_findPushButton_clicked(self):
         findDlg = FindDlg(self.windowTitle(), self.allRecords, self.findValues, self.findSizes, self)
         if findDlg:

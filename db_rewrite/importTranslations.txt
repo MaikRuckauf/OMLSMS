@@ -1,12 +1,14 @@
-unicode -> str
-    ex: unicode(e) -> str(e)
 
-import thread -> import threading
+unicode(e)                      str(e)
+
+import thread                   import threading
 
 PyQt4 -> PyQt5:
-Qt -> from PyQt5.QtCore import Qt
-QDialog -> from PyQt5.QtWidgets import QDialog
-QMessageBox -> from PyQt5.QtWidgets import QMessageBox
-QAbstractItemView -> from PyQt5.QWidgets import QAbstractItemView
-QDate -> from PyQt5.QtCore import QDate
-pyqtSignature -> from PyQt5.QtCore import pyqtSlot
+Qt                              from PyQt5.QtCore import Qt
+QDialog                         from PyQt5.QtWidgets import QDialog
+QMessageBox                     from PyQt5.QtWidgets import QMessageBox
+QAbstractItemView               from PyQt5.QWidgets import QAbstractItemView
+QDate                           from PyQt5.QtCore import QDate
+pyqtSignature                   from PyQt5.QtCore import pyqtSlot
+QTableWidget                    from PyQt5.QtWidgets import QTableWidget
+QTreeWidgetItem                 from PyQt5.QtWidgets import QTreeWidgetItem
