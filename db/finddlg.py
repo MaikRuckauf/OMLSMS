@@ -1,9 +1,10 @@
 import datetime
 from constants import *
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtSql import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtSql import *
 
 class FindDlg(QDialog):
  
@@ -26,18 +27,12 @@ class FindDlg(QDialog):
         self.selectPushButton.setDisabled(True)
         
         # connect signals to slots
-        self.connect(self.filterLineEdit, SIGNAL("returnPressed()"), 
-            self.on_filterLineEdit_returnPressed)
-        self.connect(self.filterPushButton, SIGNAL("clicked()"),
-            self.on_filterPushButton_clicked)
-        self.connect(self.tableWidget, SIGNAL("itemClicked(QTableWidgetItem *)"),
-            self.on_tableWidget_itemClicked)
-        self.connect(self.tableWidget, SIGNAL("itemDoubleClicked(QTableWidgetItem *)"),
-            self.on_tableWidget_itemDoubleClicked)
-        self.connect(self.selectPushButton, SIGNAL("clicked()"),
-            self.on_selectPushButton_clicked)
-        self.connect(self.cancelPushButton, SIGNAL("clicked()"),
-            self.on_cancelPushButton_clicked)
+        self.connect(self.filterLineEdit, self.on_filterLineEdit_returnPressed)
+        self.connect(self.filterPushButton, self.on_filterPushButton_clicked)
+        self.connect(self.tableWidget, self.on_tableWidget_itemClicked)
+        self.connect(self.tableWidget, self.on_tableWidget_itemDoubleClicked)
+        self.connect(self.selectPushButton, self.on_selectPushButton_clicked)
+        self.connect(self.cancelPushButton, self.on_cancelPushButton_clicked)
 
     def filterData(self):
         text = self.filterLineEdit.text()
@@ -150,31 +145,25 @@ class FindDlg(QDialog):
         else:
             return None
 
-    @pyqtSignature("")
     def on_selectPushButton_clicked(self):
         id = self.getSelectedId()
         if id:
             self.done(id)
 
-    @pyqtSignature("QTableWidgetItem *")
-    def on_tableWidget_itemClicked(self, item):
+    def on_tableWidget_itemClicked(self):
         if self.getSelectedId():
             self.selectPushButton.setEnabled(True)
         else:
             self.selectPushButton.setEnabled(False)
 
-    @pyqtSignature("QTableWidgetItem *")
-    def on_tableWidget_itemDoubleClicked(self, item):
+    def on_tableWidget_itemDoubleClicked(self):
         self.done(self.getSelectedId())
 
-    @pyqtSignature("")
     def on_filterLineEdit_returnPressed(self):
         self.filterData()
 
-    @pyqtSignature("")
     def on_filterPushButton_clicked(self):
         self.filterData()
 
-    @pyqtSignature("")
     def on_cancelPushButton_clicked(self):
         self.close()

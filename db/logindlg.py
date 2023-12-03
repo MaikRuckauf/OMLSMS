@@ -2,9 +2,10 @@ import re
 from datetime import date
 from constants import *
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtSql import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtSql import *
 
 import ui
 from formviewdlg import MainDlg
@@ -29,37 +30,32 @@ class LoginDlg(MainDlg, ui.Ui_loginDlg):
         if userName:
             self.loginLineEdit.setText(userName)
 
-    @pyqtSignature("")
     def exec_(self):
         self.passwordLineEdit.setText('test') # todo: change to ''
         self.loginLineEdit.selectAll()
         self.updateUi()
         return super(LoginDlg, self).exec_()
 
-    @pyqtSignature("QString")
-    def on_loginLineEdit_textEdited(self, text):
+    def on_loginLineEdit_textEdited(self):
         self.updateUi()
 
-    @pyqtSignature("")
     def on_loginLineEdit_returnPressed(self):
         self.passwordLineEdit.setFocus()
 
-    @pyqtSignature("QString")
-    def on_passwordLineEdit_textEdited(self, text):
+    def on_passwordLineEdit_textEdited(self):
         self.updateUi()
 
-    @pyqtSignature("")
     def on_passwordLineEdit_returnPressed(self):
         self.passwordLineEdit.clearFocus()
         if self.loginPushButton.isEnabled:
             self.attemptLogin()
 
     def updateUi(self):
-        enable = not self.loginLineEdit.text().isEmpty() and \
-                 not self.passwordLineEdit.text().isEmpty()
+        enable = False
+        if self.loginLineEdit.text() and self.passwordLineEdit.text():
+            enable = True
         self.loginPushButton.setEnabled(enable)
 
-    @pyqtSignature("")
     def on_loginPushButton_clicked(self):
         self.attemptLogin()
 
@@ -76,12 +72,11 @@ class LoginDlg(MainDlg, ui.Ui_loginDlg):
             updateDatabase()
             self.statusLabel.setText("Performing database maintenance...")
             QCoreApplication.instance().processEvents()
-        except Exception, e:
+        except Exception as e:
             self.statusLabel.setText("Error connecting to database.")
             QCoreApplication.instance().processEvents()
         else:
             self.done(True)
 
-    @pyqtSignature("")
     def on_exitPushButton_clicked(self):
         self.done(False)

@@ -2,14 +2,15 @@ import sys, os
 from constants import *
 import constants
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtSql import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtSql import *
 import ui, logindlg
 
 sys.path.append(OMLWEB_PATH)
 from django.conf import settings
-import omlweb
+from web import omlweb
 
 import printpdf
 import ctypes
@@ -43,8 +44,8 @@ def main(isTestEnviron, *argv):
     configValues = []
     try:
         configValues = readConfigValues(cwd + "\config.txt")
-    except Exception, e:
-        QMessageBox.critical(None, "Error Reading Configuration File", unicode(e))
+    except Exception as e:
+        QMessageBox.critical(None, "Error Reading Configuration File", str(e))
     else:
         # Django settings
         settings.configure(
@@ -97,8 +98,8 @@ def main(isTestEnviron, *argv):
                 form=MainWindow(configValues, login.loginLineEdit.text(), configValues[USER_INITIALS])
                 form.move(configValues[MAIN_X_POS], configValues[MAIN_Y_POS])
                 form.show()
-            except Exception, e:
-                QMessageBox.critical(None, "Error Initializing Program", unicode(e))
+            except Exception as e:
+                QMessageBox.critical(None, "Error Initializing Program", str(e))
             finally:
                 app.exec_()
 
@@ -167,31 +168,24 @@ class MainWindow(QMainWindow, ui.Ui_mainWindow):
             show.show(self.bookmark)
             self.currentChild = show
     
-    @pyqtSignature("")
     def on_dentistsPushButton_clicked(self):
         self.showMainDialog(self.dentistDlg)
         
-    @pyqtSignature("")
     def on_sterilizersPushButton_clicked(self):
         self.showMainDialog(self.sterilizerDlg)
 
-    @pyqtSignature("")
     def on_lotsPushButton_clicked(self):
         self.showMainDialog(self.lotDlg)
 
-    @pyqtSignature("")
     def on_renewalsPushButton_clicked(self):
         self.showMainDialog(self.renewalDlg)
 
-    @pyqtSignature("")
     def on_testsPushButton_clicked(self):
         self.showMainDialog(self.testDlg)
 
-    @pyqtSignature("")
     def on_reportsPushButton_clicked(self):
         self.showMainDialog(self.reportDlg)
     
-    @pyqtSignature("int")
     def on_userComboBox_activated(self, int):
         self.user = self.userList[int]
         if self.currentChild:

@@ -25,4 +25,3 @@ This project is focused on rewritting OMLSMS and updating all of its imports to 
 👤 **Kemani Simms**
 
 - Github: [@Kasmanian](https://github.com/Kasmanian)
-
