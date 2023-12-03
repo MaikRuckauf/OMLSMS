@@ -1,9 +1,10 @@
 import thread
 from constants import *
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtSql import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtSql import *
 
 from finddlg import FindDlg
 import printpdf
@@ -25,28 +26,28 @@ class MainDlg(QDialog):
                 else:
                     printpdf.printHTML(html, useLabelPrinter)
             except Exception as e:
-                QMessageBox.warning(None, "Print Error.", unicode(e))
+                QMessageBox.warning(None, "Print Error.", str(e))
 
     def printPDF(self, pdf):
         if pdf:
             try:
                 thread.start_new_thread(printpdf.printPDF, (pdf,))
             except Exception as e:
-                QMessageBox.warning(None, "Print Error.", unicode(e))
+                QMessageBox.warning(None, "Print Error.", str(e))
 
     def viewText(self, text):
         if text:
             try:
                 thread.start_new_thread(printpdf.viewText, (text,))
             except Exception as e:
-                QMessageBox.warning(None, "View Error.", unicode(e))
+                QMessageBox.warning(None, "View Error.", str(e))
 
     def printText(self, text):
         if text:
             try:
                 thread.start_new_thread(printpdf.printText, (text,))
             except Exception as e:
-                QMessageBox.warning(None, "Print Error.", unicode(e))
+                QMessageBox.warning(None, "Print Error.", str(e))
 
     def _configValues(self):
         return(self.parent().configValues)
@@ -231,41 +232,33 @@ class FormViewDlg(MainDlg):
             )
         super(FormViewDlg, self).show()
 
-    @pyqtSignature("")
     def on_findPushButton_clicked(self):
         findDlg = FindDlg(self.windowTitle(), self.records, self.findValues, self.findSizes, self)
         if findDlg:
             self.findRecord(findDlg.exec_())
        
-    @pyqtSignature("")
     def on_seekFirstPushButton_clicked(self):
         self.setRecordNum(0)
 
-    @pyqtSignature("")
     def on_seekPreviousPushButton_clicked(self):
         self.decrementRecordNum()
 
-    @pyqtSignature("")
     def on_seekNextPushButton_clicked(self):
         self.incrementRecordNum()
 
-    @pyqtSignature("")
     def on_seekLastPushButton_clicked(self):
         if self.records:
             self.setRecordNum(len(self.records) - 1)
 
-    @pyqtSignature("")
     def on_insertPushButton_clicked(self):
         self.inserting = self.prepareNewRecord()
         if self.inserting:
             self.loadForm(self.inserting)
             self.enableEditing()
 
-    @pyqtSignature("")
     def on_modifyPushButton_clicked(self):
         self.enableEditing()
 
-    @pyqtSignature("")
     def on_savePushButton_clicked(self):
         self.disableEditing()
         if self.inserting:
@@ -281,7 +274,6 @@ class FormViewDlg(MainDlg):
             self.inserting = None
             self.loadRecords(id)
 
-    @pyqtSignature("")
     def on_cancelPushButton_clicked(self):
         self.disableEditing()
         self.inserting = None
@@ -312,7 +304,6 @@ class FormViewPartialLoadDlg(FormViewDlg):
     # Redefine seek buttons to handle partial loading by month
     #
 
-    @pyqtSignature("")
     def on_seekFirstPushButton_clicked(self):
         if self.recordNum > 0:
             self.setRecordNum(0)
@@ -322,7 +313,6 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.incrementDateRange()
 
-    @pyqtSignature("")
     def on_seekPreviousPushButton_clicked(self):
         if self.recordNum > 0:
             self.decrementRecordNum()
@@ -332,7 +322,6 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.incrementDateRange()
 
-    @pyqtSignature("")
     def on_seekNextPushButton_clicked(self):
         if self.records and self.recordNum < len(self.records) - 1:
             self.incrementRecordNum()
@@ -342,7 +331,6 @@ class FormViewPartialLoadDlg(FormViewDlg):
             else:
                 self.decrementDateRange()
 
-    @pyqtSignature("")
     def on_seekLastPushButton_clicked(self):
         if self.incrementDateRange():
             self.setRecordNum(0)
@@ -391,7 +379,6 @@ class FormViewPartialLoadDlg(FormViewDlg):
             record_date = self.getRecordDate(id)
             return self.findDatedRecord(id, record_date)
 
-    @pyqtSignature("")
     def on_findPushButton_clicked(self):
         findDlg = FindDlg(self.windowTitle(), self.allRecords, self.findValues, self.findSizes, self)
         if findDlg:

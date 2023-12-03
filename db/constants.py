@@ -1,13 +1,13 @@
-import datetime, locale, sys
+import datetime, locale
 
 #locale.setlocale( locale.LC_ALL, 'en_CA.UTF-8' )
 locale.setlocale( locale.LC_ALL, '' )
 
 # Configuration File Constants
-CONFIG_FILENAME = "\OMLSMS\config.txt"
-#must be set here for imports
-#OMLWEB_PATH = "C:\omlsms\web" #test directory
-OMLWEB_PATH = "J:\Share\D R C\OML\OMLSMSv2\web" #installation directory
+CONFIG_FILENAME = "/OMLSMS/config.txt"
+# must be set here for imports
+OMLWEB_PATH = "c:/Users/Ksimm/Development/OMLSMS/db/web"
+# OMLWEB_PATH = "J:\Share\D R C\OML\OMLSMSv2\web" #installation directory
 IMAGES_PATH = "" #set by configuration file
 
 # Defines a range of dates that should be in the database
@@ -65,19 +65,19 @@ DEFAULT_PRINTER,
 
 def readConfigValues(filename):
     configValues = []
-    configFile = file(filename,"r")
-    for line in configFile:
-        value = line.split('#')[0].strip()
-        if value != "":
-            configValues.append(value)
-    assert len(configValues) == NUM_CONFIG_VALUES
-    if configValues[SERVER_PORT] == 'default':
-        configValues[SERVER_PORT] = ''
-    else:
-        configValues[SERVER_PORT] = int(configValues[SERVER_PORT])
-    configValues[MAIN_X_POS] = int(configValues[MAIN_X_POS])
-    configValues[MAIN_Y_POS] = int(configValues[MAIN_Y_POS])
-    return configValues
+    with open(filename) as configFile:
+        for line in configFile:
+            value = line.split('#')[0].strip()
+            if value != "":
+                configValues.append(value)
+        assert len(configValues) == NUM_CONFIG_VALUES
+        if configValues[SERVER_PORT] == 'default':
+            configValues[SERVER_PORT] = ''
+        else:
+            configValues[SERVER_PORT] = int(configValues[SERVER_PORT])
+        configValues[MAIN_X_POS] = int(configValues[MAIN_X_POS])
+        configValues[MAIN_Y_POS] = int(configValues[MAIN_Y_POS])
+        return configValues
 
 #
 # Date formating and conversions

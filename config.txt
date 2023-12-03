@@ -1,0 +1,52 @@
+# OMLDB Configuration File
+
+#
+
+# Do not change the order of the contents!
+
+#
+
+#-----------------------------------------------------------
+
+EVS                     # Default user initials
+
+omltech                 # Default SQL Server user name
+
+SODOMLSQL\SQLEXPRESS    # Server address
+
+default                 # Port number
+
+omlsms                  # Database name
+
+#-----------------------------------------------------------
+
+50			# starting X position for window
+
+50			# starting Y position for window
+
+#-----------------------------------------------------------
+
+# Pathnames
+
+#
+
+# the omlweb path must be set in constants.py if changed
+
+#
+c:\program files\ghostgum\gsview\gsview64.exe       #PDF Viewer's path
+
+c:\program files\ghostgum\gsview\gsprint.exe        #PDF Printer's path
+
+c:\python27\scripts\xhtml2pdf.exe                   #HTML to PDF converter
+
+#-----------------------------------------------------------
+
+# Printer names
+
+#
+
+Barcode                 # Printer used for test labels (Label Printer)
+
+default                 # Printer used for all other output "default" to use
+
+                        # the default printer.
